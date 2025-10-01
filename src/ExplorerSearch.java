@@ -44,4 +44,29 @@ public class ExplorerSearch {
 
         return 0;
     }
+
+    private static int reachableArea(int[][] island, boolean[][] visited, int row, int col) {
+        if (row < 0 || col < 0 || row >= island.length || col >= island[0].length) return 0;
+
+        if (island[row][col] == 2 || island[row][col] == 3 || visited[row][col]) return 0;
+
+        visited[row][col] = true;
+
+        int count = 1;
+
+        int[][] moves = {
+            {-1, 0}, //UP
+            {1, 0}, //DOWN
+            {0, 1}, //RIGHT
+            {0, -1} //LEFT
+        };
+        
+        for (int[] move : moves) {
+            int newRow = row + move[0];
+            int newCol = col + move[1];
+            count += reachableArea(island, visited, newRow, newCol);
+        }
+
+        return count;
+    }
 }
