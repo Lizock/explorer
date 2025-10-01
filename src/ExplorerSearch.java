@@ -32,6 +32,16 @@ public class ExplorerSearch {
         // Implement your method here!
         // Please also make more test cases
         // I STRONGLY RECOMMEND testing some helpers you might make too
-        return -1;
+        boolean[][] visited = new boolean[island.length][island[0].length];
+
+        for (int i = 0; i < island.length; i++) {
+            for (int j = 0; j < island[i].length; j++) {
+                if (island[i][j] == 0) {
+                    return reachableArea(island, visited, i, j);
+                }
+            }
+        }
+
+        return 0;
     }
 }
