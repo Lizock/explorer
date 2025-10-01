@@ -57,6 +57,32 @@ public class ExplorerSearchTest {
     }
 
     @Test
+    public void testReachableArea_all() {
+        int[][] island = {
+            {1,1,1,1,1,1},
+            {1,1,1,1,1,1},
+            {1,1,1,1,1,1},
+            {1,0,1,1,1,1},
+            {1,1,1,1,1,1},
+        };
+        int actual = ExplorerSearch.reachableArea(island);
+        assertEquals(30, actual);
+    }
+
+    @Test
+    public void testReachableArea_uneven() {
+        int[][] island = {
+            {0,3,1,1,1,1},
+            {1,1,1,2,3,2},
+            {2,3,3,1},
+            {1,1,1,1,2,3},
+            {1,1,1,1},
+        };
+        int actual = ExplorerSearch.reachableArea(island);
+        assertEquals(8, actual);
+    }
+
+    @Test
     public void testReachableArea_single() {
         int[][] island = {
             {0},
